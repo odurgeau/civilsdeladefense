@@ -9,7 +9,7 @@ class HomepagesController < ApplicationController
       .includes(:contract_type)
       .order(published_at: :desc)
     @job_offers_selected = root_rel.last(3)
-    @job_offers_last = root_rel.last(9)
+    @job_offers_last = root_rel.last(6)
 
     @categories = Category.order("lft ASC").where("published_job_offers_count > ?", 0)
     @max_depth_limit = 1
