@@ -11,6 +11,14 @@
   }
 }
 
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 input {
   &.rf-btn {
     border: 0;
@@ -258,11 +266,9 @@ h2 {
   .block--overlap {
     margin-top: -80px !important;
   }
+
   .rf-bg--hero-image {
-    min-height: 200px;
-    h1 {
-      padding: 13rem 0;
-    }
+    height: 27rem;
   }
   .job-offer-grid {
     > *:nth-child(2n) {
