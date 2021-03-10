@@ -1,7 +1,7 @@
 - cache [job_offer] do
   - category = job_offer.category
   .rf-pb-2w.rf-pt-2w
-    = link_to job_offer do
+    = link_to job_offer, target: "_top" do
       .d-flex.align-items-center
         .d-flex.flex-column
           - if category.depth == 2

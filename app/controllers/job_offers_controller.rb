@@ -11,10 +11,13 @@ class JobOffersController < ApplicationController
   def index
     @page = current_organization.pages.where(parent_id: nil).first
     @categories = Category.order("lft ASC").where(
-      "published_job_offers_count > ? AND depth <= ?", 0, 1
+      "published_job_offers_count > ? AND depth = ?", 0, 0
     )
-    @regions = JobOffer.pluck(:region).uniq.reject(&:blank?)
-    @region = params[:region]
+    @regions = JobOffer.where.not(region: ["", nil]).where.not(county: ["", nil])
+    @regions = @regions.pluck(:region, :county).uniq
+    @regions = @regions.group_by { |a, b| a }.each_with_object({}) { |(key, values), hash|
+      hash[key] = values.flatten - [key]
+    }
 
     respond_to do |format|
       format.html {}
@@ -93,11 +96,14 @@ class JobOffersController < ApplicationController
     filter_by(ContractType)
     filter_by(StudyLevel)
     filter_by(ExperienceLevel)
+
+    @job_offers = @job_offers.where(search_params) if search_params
     filter_by_date(:contract_start_on)
     filter_by_date(:published_at)
 
     @job_offers = @job_offers.search_full_text(params[:q]) if params[:q].present?
-    @job_offers = @job_offers.paginate(page: params[:page]) unless params[:no_pagination]
+    @job_offers = @job_offers.paginate(page: params[:page], per_page: 15) unless params[:no_pagination]
+    @job_offers = @job_offers.includes(:category)
   end
 
   def filter_by_date(kind)
@@ -121,7 +127,6 @@ class JobOffersController < ApplicationController
     @job_offers = @job_offers.where(kind_id => object.id)
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_job_offer
     @job_offer = JobOffer.find(params[:id])
     if !@job_offer.published? && !always_display_job_offer(@job_offer)
@@ -130,7 +135,6 @@ class JobOffersController < ApplicationController
     return redirect_to @job_offer, status: :moved_permanently if params[:id] != @job_offer.slug
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def job_application_params
     permitted_params = %i[]
     user_attributes = %i[first_name last_name current_position phone website_url]
@@ -142,6 +146,14 @@ class JobOffersController < ApplicationController
     job_application_files_attributes = %i[content job_application_file_type_id]
     permitted_params << {job_application_files_attributes: job_application_files_attributes}
     params.require(:job_application).permit(permitted_params)
+  end
+
+  def search_params
+    params.permit(
+      job_offers: {
+        study_level_id: [], contract_type_id: [], experience_level_id: [], category_id: [], county: [], region: []
+      }
+    )
   end
 
   def always_display_job_offer(job_offer)
