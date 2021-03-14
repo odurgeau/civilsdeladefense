@@ -156,10 +156,11 @@ Créer la première organisation :
 
 ```
 hsh = {
-  name: 'Civils de la Défense',
-  business_owner_name: 'le Ministère des Armées',
+  service_name: 'Civils de la Défense',
+  brand_name: 'le Ministère des Armées',
   subdomain: 'XXX',
-  domain: 'XXX.YYY.ZZZ'
+  domain: 'XXX.YYY.ZZZ',
+  prefix_article: 'mna'
 }
 organization = Organization.create!(hsh)
 ```
@@ -199,6 +200,9 @@ Récupération mail IMAP
 Configuration par la variable d'environnement MAIL_URL :
 `MAIL_URL=imaps://username_url_encoded:password@host:port`
 Le protocole spécifié dans la chaîne de connexion sera ignoré et remplacé par imap (avec TLS), de même pour le port qui sera remplacé par 993.
+
+Configuration de l'adresse email à utiliser pour l'envoi de mail (from) :
+`DEFAULT_FROM=username@host`
 
 Transfert des emails dans la corbeille après traitement
 Configuration par la variable d'environnement MAIL_FOLDER_TRASH :
