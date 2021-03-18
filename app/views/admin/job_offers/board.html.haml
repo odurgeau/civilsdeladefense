@@ -5,8 +5,9 @@
   .lists
     - JobApplication.aasm.states.each do |state|
       - state_name = state.name.to_s
-      - concerned_job_applications = @job_applications[state_name] || []
-      = render partial: 'board_column', locals: { state_name: state_name, job_applications: concerned_job_applications}
+      - unless %w(phone_meeting phone_meeting_rejected after_meeting_rejected contract_drafting contract_feedback_waiting contract_received ).include? state_name
+        - concerned_job_applications = @job_applications[state_name] || []
+        = render partial: 'board_column', locals: { state_name: state_name, job_applications: concerned_job_applications}
 .modal.fade#remoteContentModal{tabindex: -1, role: :dialog, aria: {labelledby: :remoteContentModal, hidden: true}}
   .modal-dialog.modal-lg{role: :document}
     .modal-content
