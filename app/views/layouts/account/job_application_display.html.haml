@@ -8,8 +8,8 @@
         %small= @job_offer.title
     .rf-grid-row.rf-mt-3w
       .rf-col-12
-        .h5.text-quinary.text-center.mb-4 Suivi de candidature
-        = render partial: '/account/job_applications/state_stepper', locals: {job_application: @job_application}
+        -# .h5.text-quinary.text-center.mb-4 Suivi de candidature
+        -# = render partial: '/account/job_applications/state_stepper', locals: {job_application: @job_application}
     .rf-grid-row.rf-mt-3w
       .rf-tabs.w-100{data: {controller: 'rf-tab-management'}}
         %ul.rf-tabs__list{"aria-label" => "[Candidature]", role: "tablist"}
