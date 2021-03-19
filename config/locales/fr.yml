@@ -126,7 +126,8 @@ fr:
     filter_regions:
       select: "Region"
     filter:
-      select_contract_type: "Contrat"
+      select_category: "Thématique"
+      select_contract_type: "Durée"
       select_study_level: "Niveau d'étude"
       select_experience_level: "Niveau d'expérience"
     filters:
