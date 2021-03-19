@@ -365,7 +365,7 @@ fr:
       form:
         card_1_title_new: "1. Rédaction de l'offre"
         card_1_title_edit: "1. Édition de l'offre %{job_offer_identifier}"
-        card_1_1_title: "1.1 Description de l'offre"
+        card_1_1_title: "1.1 Description de la mission"
         card_1_2_title: "1.2 Paramètres de l'offre"
         card_1_3_title: "1.3. Estimation rémunération salariale"
         estimate_monthly_salary_net_html: "Fourchette de référence : <span class='estimate_monthly_salary_net_reference'>%{value}</span>"
@@ -1111,7 +1111,7 @@ fr:
       administrator/role:
         bant: "BANT"
         employer: "Employeur"
-        grand_employer: "Grand Employeur"
+        grand_employer: "ANCT"
         brh: "RH"
       email_template:
         title: "Titre"
@@ -1169,8 +1169,8 @@ fr:
         organization_description: "Descriptif de l'organisation"
       job_offer_actor/role:
         employer: "Employeur"
-        grand_employer: "Grand Employeur"
-        supervisor_employer: "Employeur Superviseur"
+        grand_employer: "ANCT"
+        supervisor_employer: "Préfecture"
         brh: "RH"
         cmg: "CMG"
       organization_default:
