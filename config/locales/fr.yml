@@ -134,7 +134,7 @@ fr:
       search: "Rechercher"
       contract_start_on_filter: Début du contrat
       published_at_filter: Publication
-      select_region: Région
+      select_region: Département
     job_offer:
       show: "Voir le détail de l'offre"
       published_date: 'Publiée il y a %{time_ago_in_words}'
