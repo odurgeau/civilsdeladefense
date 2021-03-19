@@ -140,10 +140,10 @@ fr:
       published_date: 'Publiée il y a %{time_ago_in_words}'
     job_offer_content:
       apply: "Je postule"
-      description: "Descriptif des missions"
+      description: "Description de la mission"
       required_profile: "Profil recherché"
       organization_description: "Descriptif de l'organisation"
-      recruitment_process: "Process de recrutement"
+      recruitment_process: "Accompagnement proposé"
     job_offer_head:
       available_immediately: "Poste à pourvoir immédiatement"
       benefit: "Avantage en nature"
@@ -1157,10 +1157,10 @@ fr:
         state/suspended: "En pause"
         state/archived: "Archivée"
         contract_type: "Type de contrat"
-        contract_start_on: "Début du contrat"
-        location: "Localisation"
+        contract_start_on: "Date limite de candidature"
+        location: "Département"
         study_level: "Niveau d'études"
-        category: "Domaine professionnel"
+        category: "Thématique"
         experience_level: "Niveau d'expérience"
         salary: "Rémunération"
         recruitment_process: Process de recrutement
