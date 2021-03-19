@@ -1062,7 +1062,7 @@ fr:
         title: "Téléchargement"
   attributes:
     name: "Nom"
-    current_position: "Poste actuel"
+    current_position: "Diplôme"
   activerecord:
     errors:
       messages:
@@ -1099,7 +1099,7 @@ fr:
           attributes:
             base:
               not_allowed_because_suspended: "impossible de supprimer un compte tant qu'il est suspendu"
-            current_position: "Poste actuel"
+            current_position: "Diplôme"
             photo:
               file_size_is_less_than: "Fichier trop volumineux, doit être max. 2Mo"
     models:

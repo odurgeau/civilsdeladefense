@@ -37,7 +37,7 @@ fr:
         department: "Souhait(s) géographique(s)"
         city: "Ville"
         country: "Pays"
-        current_position: "Poste actuel"
+        current_position: "Diplôme"
         email: "Courriel"
         estimate_annual_salary_gross: "Estimation annuel brut (fonction publique)"
         estimate_monthly_salary_net: "Estimation mensuel net (fonction publique)"
@@ -220,7 +220,7 @@ fr:
         archiving_reason_id: 'Aucune raison'
     hints:
       defaults:
-        current_position: "Si aucun poste occupé actuellement, saisir \"sans emploi\"."
+        # current_position: "Si aucun poste occupé actuellement, saisir \"sans emploi\"."
       administrator:
         title: "Facultatif. Ex. : Chef de département Qualité"
         first_name: "Facultatif"
