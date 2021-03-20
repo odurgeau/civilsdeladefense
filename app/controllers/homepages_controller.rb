@@ -15,6 +15,9 @@ class HomepagesController < ApplicationController
       "published_job_offers_count > ? AND depth <= ?", 0, 1
     )
 
+    @regions = JobOffer.pluck(:region).uniq.reject(&:blank?)
+    @region = params[:region]
+
     @contract_types = ContractType.all
   end
 end
