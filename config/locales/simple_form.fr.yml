@@ -99,6 +99,7 @@ fr:
         required_profile: "Informations pratiques"
         organization_description: "Descriptif de l'organisation"
         recruitment_process: "Accompagnement proposé"
+        useful_informations: "Informations pratiques"
         benefit: "Avantage en nature"
         bop: "BOP"
         contract_type: "Type de contrat"

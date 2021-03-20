@@ -445,6 +445,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.string "bne_value"
     t.date "bne_date"
     t.uuid "archiving_reason_id"
+    t.string "useful_informations"
     t.index ["archiving_reason_id"], name: "index_job_offers_on_archiving_reason_id"
     t.index ["bop_id"], name: "index_job_offers_on_bop_id"
     t.index ["category_id"], name: "index_job_offers_on_category_id"

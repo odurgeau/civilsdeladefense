@@ -145,6 +145,7 @@ fr:
       required_profile: "Profil recherché"
       organization_description: "Descriptif de l'organisation"
       recruitment_process: "Accompagnement proposé"
+      useful_informations: "Informations pratiques"
     job_offer_head:
       available_immediately: "Poste à pourvoir immédiatement"
       benefit: "Avantage en nature"
