@@ -11,10 +11,10 @@
     .rf-input-group
       - prompt = t('job_offers.filter.select_contract_type')
       = select_tag "contract_type_id", options_from_collection_for_select(@contract_types, "id", "name", params[:contract_type_id]), include_blank: false, prompt: prompt, data: {placeholder: prompt, 'allow-clear': true}, class: 'rf-select'
-  - cache [@regions, params[:region]] do
+  - cache [@counties, params[:county]] do
     .rf-input-group
-      - options = options_for_select(@regions, @region)
-      - prompt = t("job_offers.filter.select_region")
+      - options = options_for_select(@counties, @county)
+      - prompt = t("job_offers.filter.select_county")
       - data = {placeholder: prompt, 'allow-clear': true}
-      = select_tag :region, options, include_blank: false, prompt: prompt, data: data, class: 'rf-select'
+      = select_tag :county, options, include_blank: false, prompt: prompt, data: data, class: 'rf-select'
   = submit_tag t('job_offers.filters.search'), name: nil, class: 'rf-btn'

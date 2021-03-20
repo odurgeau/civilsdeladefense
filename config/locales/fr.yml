@@ -126,7 +126,8 @@ fr:
     filter_regions:
       select: "Region"
     filter:
-      select_region: "Département"
+      select_region: "Région"
+      select_county: Département
       select_category: "Thématique"
       select_contract_type: "Durée"
       select_study_level: "Niveau d'étude"
@@ -135,7 +136,8 @@ fr:
       search: "Rechercher"
       contract_start_on_filter: Début du contrat
       published_at_filter: Publication
-      select_region: Département
+      select_region: Région
+      select_county: Département
     job_offer:
       show: "Voir le détail de l'offre"
       published_date: 'Publiée il y a %{time_ago_in_words}'
