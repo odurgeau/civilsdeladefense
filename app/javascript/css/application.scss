@@ -215,7 +215,7 @@ h2 {
 
 :root:not([data-theme="dark"]) {
   .rf-bg--alt-2 {
-    --bg-alt-2: #0682ff;
+    --bg-alt-2: #2E327B;
     --g700: white;
     --bf500: white;
     --w-bf500: var(--bf500-plain);
@@ -234,10 +234,10 @@ h2 {
 
 :root {
   .rf-bg--alt-2 {
-    --bg-alt-2: rgb(0, 68, 148);
+    --bg-alt-2: #2E327B;
     --g800: white;
     --bf500: white;
-    --w-bf500: #0682ff;
+    --w-bf500: #2E327B;
     .rf-btn {
       --color-hover: rgba(0, 0, 0, 0.05);
       --color-active: rgba(91, 91, 255, 0.5);
