@@ -144,8 +144,8 @@ fr:
     job_offer_content:
       apply: "Je postule"
       description: "Description de la mission"
-      required_profile: "Profil recherché"
       organization_description: "Descriptif de l'organisation"
+      required_profile: "Profil du candidat"
       recruitment_process: "Accompagnement proposé"
       useful_informations: "Informations pratiques"
     job_offer_head:
