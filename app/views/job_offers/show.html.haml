@@ -1,6 +1,7 @@
 - @page_title = 'Offre d\'emploi ' + @job_offer.title + ' ' + @job_offer.location
 - encoded_url = url_encode(request.original_url)
 
+%p#before-offer= t('job_offers.job_offer.message_before')
 %h1.rf-mt-0.rf-h2
   .social-links
     %a{onclick: "window.print(); return false", href: "#"}
