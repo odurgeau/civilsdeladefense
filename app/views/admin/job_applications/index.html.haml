@@ -26,7 +26,7 @@
                 .col-12.user-job-applications-count
                   Candidatures
                 .col-12.personal-profile-address-short
-                  Secteur
+                  Localisation
           = render partial: 'job_application', collection: @job_applications_filtered
           .mt-5
             = will_paginate @job_applications_filtered, params: { controller: 'job_applications', action: controller.action_name }
