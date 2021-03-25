@@ -141,6 +141,7 @@ fr:
     job_offer:
       show: "Voir le détail de l'offre"
       published_date: 'Publiée il y a %{time_ago_in_words}'
+      message_before: "Le volontaire territorial en administration (VTA) s’adresse à un jeune diplômé (à partir de bac + 2) qui souhaite travailler dans une collectivité territoriale rurale. Le temps d’une mission de 12 à 18 mois, le VTA lui permet de renforcer ses compétences en ingénierie de projet."
     job_offer_content:
       apply: "Je postule"
       description: "Description de la mission"
