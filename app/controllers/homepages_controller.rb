@@ -14,8 +14,9 @@ class HomepagesController < ApplicationController
     @categories = Category.order("lft ASC").where(
       "published_job_offers_count > ? AND depth <= ?", 0, 1
     )
+    # test
 
-    @counties = JobOffer.pluck(:county).uniq.reject(&:blank?)
+    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| ["#{c}-#{l}",l] unless c.nil?}.reject(&:blank?)
     @county = params[:county]
 
     @contract_types = ContractType.all

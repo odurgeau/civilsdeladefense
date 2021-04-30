@@ -17,7 +17,7 @@ class JobOffersController < ApplicationController
     @study_levels = StudyLevel.all
     @experience_levels = ExperienceLevel.all
     @regions = JobOffer.regions
-    @counties = JobOffer.pluck(:county).uniq.reject(&:blank?)
+    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| ["#{c}-#{l}",l] unless c.nil?}.reject(&:blank?)
     @county = params[:county]
 
     respond_to do |format|
