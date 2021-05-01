@@ -16,7 +16,7 @@ class HomepagesController < ApplicationController
     )
     # test
 
-    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| [l, "#{c}-#{l}"] unless l.blank?}.reject(&:blank?)
+    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| ["#{c}-#{l}", l] unless l.blank?}.reject(&:blank?)
     @county = params[:county]
 
     @contract_types = ContractType.all
