@@ -34,7 +34,7 @@
                         = f.association :category, collection: grouped_options, disabled: Category.all.select{|x| x.children.count != 0}.map(&:id), input_html: {class: 'custom-select'}
                       .col-12.col-md-3
                         - if current_administrator.bant?
-                          - grouped_options = Employer.roots.map{|x| [x.name, x.children]}
+                          - grouped_options = Employer.roots.map{|x| [x.name, x.children.unscoped.order(:name)]}
                           = f.association :employer, collection: grouped_options, as: :grouped_select, group_method: :last, input_html: {class: 'custom-select'}
                         - else
                           - employers = [current_administrator.employer]
