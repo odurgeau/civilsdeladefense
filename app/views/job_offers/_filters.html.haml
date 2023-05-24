@@ -1,27 +1,19 @@
-  = form_tag request.original_url, method: :get, class: 'auto-submit filters' do
+.rf-sidemenu.rf-sidemenu--sticky-full-height
+  = form_tag(request.original_url, method: :get, "data-turbo-frame" => 'job-offers') do
     -# .rf-input-group
     -#   = text_field_tag :q, params[:q], placeholder: 'Mot-clé', class: 'rf-input'
-    = render 'filter', collection: @categories, kind: :category, name: :name_with_depth
-    = render 'filter', collection: @contract_types, kind: :contract_type
-    -# = render 'filter', collection: @study_levels, kind: :study_level
-    -# = render 'filter', collection: @experience_levels, kind: :experience_level
-
-    - cache [@regions, params[:region]] do
-      -# .rf-input-group
-      -#   = text_field_tag :q, params[:q], placeholder: 'Mot-clé', class: 'rf-input'
-      %ul.rf-sidemenu__list
-        = render 'filter_categories', collection: @categories
-        -# = render 'filter_regions', collection: @regions
-        = render 'filter', collection: @contract_types, kind: :contract_type
-        -# = render 'filter', collection: @study_levels, kind: :study_level
-        -# = render 'filter', collection: @experience_levels, kind: :experience_level
-
-    - cache [@counties, params[:county]] do 
-      .rf-input-group
-        - options = options_for_select(@counties, @county)
-        - prompt = t(".select_county")
-        - data = {placeholder: prompt, 'allow-clear': true}
-        = select_tag :county, options, include_blank: false, prompt: prompt, data: data, class: 'rf-select'
+    %ul.rf-sidemenu__list
+      = render 'filter_categories', collection: @categories
+      -# = render 'filter_regions', collection: @regions
+      = render 'filter', collection: @contract_types, kind: :contract_type
+      -# = render 'filter', collection: @study_levels, kind: :study_level
+      -# = render 'filter', collection: @experience_levels, kind: :experience_level
+    
+    .rf-input-group
+      - options = options_for_select(@counties, @county)
+      - prompt = t(".select_county")
+      - data = {placeholder: prompt, 'allow-clear': true}
+      = select_tag :county, options, include_blank: false, prompt: prompt, data: data, class: 'rf-select'
 
     -# - pattern = "(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])|31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})"
     -# .rf-input-group

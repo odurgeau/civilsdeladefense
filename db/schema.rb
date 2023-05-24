@@ -140,7 +140,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["position"], name: "index_availability_ranges_on_position"
   end
 
-  create_table "benefit_job_offers", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "benefit_job_offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "benefit_id", null: false
     t.uuid "job_offer_id", null: false
     t.datetime "created_at", null: false
@@ -207,7 +207,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["position"], name: "index_contract_types_on_position"
   end
 
-  create_table "department_users", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "department_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "department_id", null: false
     t.datetime "created_at", null: false
@@ -216,7 +216,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["user_id"], name: "index_department_users_on_user_id"
   end
 
-  create_table "departments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "departments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "name_region"
     t.string "code_region"
@@ -225,7 +225,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "email_attachments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "email_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "email_id", null: false
     t.string "content"
     t.datetime "created_at", null: false
@@ -278,21 +278,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["position"], name: "index_experience_levels_on_position"
   end
 
-  create_table "foreign_language_levels", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "foreign_language_levels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "foreign_languages", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "foreign_languages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "frequently_asked_questions", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "frequently_asked_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.string "value"
@@ -376,7 +376,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["job_offer_id"], name: "index_job_offer_actors_on_job_offer_id"
   end
 
-  create_table "job_offer_terms", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "job_offer_terms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "position"
     t.datetime "created_at", null: false
@@ -436,16 +436,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.uuid "bop_id"
     t.uuid "organization_id"
     t.uuid "contract_duration_id"
+    t.string "useful_informations"
+    t.text "organization_description"
     t.boolean "featured", default: false
     t.boolean "spontaneous", default: false
-    t.text "organization_description"
     t.datetime "draft_at", precision: nil
     t.string "pep_value"
     t.date "pep_date"
     t.string "bne_value"
     t.date "bne_date"
     t.uuid "archiving_reason_id"
-    t.string "useful_informations"
     t.index ["archiving_reason_id"], name: "index_job_offers_on_archiving_reason_id"
     t.index ["bop_id"], name: "index_job_offers_on_bop_id"
     t.index ["category_id"], name: "index_job_offers_on_category_id"
@@ -618,7 +618,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["position"], name: "index_professional_categories_on_position"
   end
 
-  create_table "profile_foreign_languages", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "profile_foreign_languages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "profile_id", null: false
     t.uuid "foreign_language_id", null: false
     t.uuid "foreign_language_level_id", null: false
@@ -688,7 +688,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["position"], name: "index_study_levels_on_position"
   end
 
-  create_table "user_menu_links", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "user_menu_links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.integer "position"
@@ -740,7 +740,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_082102) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "zip_files", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "zip_files", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "zip"

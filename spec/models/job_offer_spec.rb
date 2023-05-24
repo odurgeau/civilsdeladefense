@@ -310,6 +310,7 @@ end
 #  suspended_at                                     :datetime
 #  title                                            :string
 #  to_be_met_job_applications_count                 :integer          default(0), not null
+#  useful_informations                              :string
 #  created_at                                       :datetime         not null
 #  updated_at                                       :datetime         not null
 #  archiving_reason_id                              :uuid
