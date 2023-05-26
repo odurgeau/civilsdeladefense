@@ -122,7 +122,7 @@ fr:
         one: "1 offre d'emploi trouvée"
         other: "%{count} offres d'emploi trouvées"
     filter_categories:
-      select: "Secteur"
+      select: "Thématique"
     filter_regions:
       select: "Region"
     filter:
