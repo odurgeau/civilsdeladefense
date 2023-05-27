@@ -96,7 +96,7 @@ fr:
         location: "Localisation"
         employer: "Employeur"
         description: "Descriptif de l’offre"
-        required_profile: "Informations pratiques"
+        required_profile: "Profil du candidat"
         organization_description: "Descriptif de l'organisation"
         recruitment_process: "Accompagnement proposé"
         useful_informations: "Informations pratiques"
