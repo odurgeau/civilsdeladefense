@@ -17,7 +17,7 @@ class JobOffersController < ApplicationController
     @study_levels = StudyLevel.all
     @experience_levels = ExperienceLevel.all
     @regions = JobOffer.regions
-    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| ["#{c}-#{l}",l] unless c.nil?}.reject(&:blank?)
+    @counties = JobOffer.unscoped.order(county_code: :asc).pluck(:county_code, :county).uniq.map{|c,l| ["#{c}-#{l}",l] if c.present? && l.present?}.reject(&:blank?)
     @county = params[:county]
 
     respond_to do |format|
@@ -104,12 +104,19 @@ class JobOffersController < ApplicationController
 
     @job_offers = @job_offers.where(category_id: searched_category_ids) if searched_category_ids.present?
 
+    ######## Recherche VTA
+    @job_offers = @job_offers.where(county: params[:county]) if params[:county].present?
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @job_offers = @job_offers.where(category_id: @category.self_and_descendants)
+    end
+    if params[:contract_type_id].present?
+      @job_offers = @job_offers.where(contract_type_id: params[:contract_type_id])
+    end
+    ######## Recherche VTA
+
     @job_offers = @job_offers.where("contract_start_on <= ?", contract_start_on) if contract_start_on.present?
     @job_offers = @job_offers.where("published_at >= ?", published_at) if published_at.present?
-    # TODO : Migration : A revoir afin d'utiliser la même syntaxe et vérifier que ça marche encore!
-    if params[:county].present?
-      @job_offers = @job_offers.where(county: params[:county])
-    end
 
     @job_offers = @job_offers.search_full_text(params[:q]) if params[:q].present?
     @job_offers = @job_offers.paginate(page: page, per_page: 15) unless params[:no_pagination]

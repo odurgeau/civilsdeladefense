@@ -1,13 +1,14 @@
 .rf-sidemenu.rf-sidemenu--sticky-full-height
-  = form_tag(request.original_url, method: :get, "data-turbo-frame" => 'job-offers') do
+  = form_tag(request.original_url, method: :get) do
     -# .rf-input-group
     -#   = text_field_tag :q, params[:q], placeholder: 'Mot-clé', class: 'rf-input'
-    %ul.rf-sidemenu__list
-      = render 'filter_categories', collection: @categories
-      -# = render 'filter_regions', collection: @regions
-      = render 'filter', collection: @contract_types, kind: :contract_type
-      -# = render 'filter', collection: @study_levels, kind: :study_level
-      -# = render 'filter', collection: @experience_levels, kind: :experience_level
+    -# %ul.rf-sidemenu__list
+    -# = render 'filter_categories', collection: @categories
+    = render 'filter', collection: @categories, kind: :category, name: :name_with_depth
+    -# = render 'filter_regions', collection: @regions
+    = render 'filter', collection: @contract_types, kind: :contract_type
+    -# = render 'filter', collection: @study_levels, kind: :study_level
+    -# = render 'filter', collection: @experience_levels, kind: :experience_level
     
     .rf-input-group
       - options = options_for_select(@counties, @county)

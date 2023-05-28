@@ -1,11 +1,25 @@
 .rf-container.rf-mb-9w.rf-mt-4w
   .rf-grid-row.rf-grid-row--gutters
     .rf-col-12
-      = form_tag job_offers_url, method: :get, class: 'rf-search-bar rf-search-bar--lg' do
-        %label.rf-label{for: "q"}
-          Mots-clés recherchés parmi les offres d'emploi
-        = search_field_tag :q, params[:q], placeholder: 'Recherche par mot-clé dans les offres d\'emploi', class: 'rf-input'
-        %button.rf-btn.rf-btn--lg{:title => "Rechercher"}
+      = form_tag job_offers_url, method: :get, class: 'w-100 form-inline' do
+        -# %label.rf-label{for: "q"}
+        -#   Mots-clés recherchés parmi les offres d'emploi
+        -# = search_field_tag :q, params[:q], placeholder: 'Recherche par mot-clé dans les offres d\'emploi', class: 'rf-input'
+
+        .rf-input-group
+          - options = options_from_collection_for_select(@categories, "id", "name_with_depth", params[:category_id])
+          - prompt = t('job_offers.filter.select_category')
+          = select_tag "category_id", options, include_blank: false, prompt: prompt, data: {placeholder: prompt, 'allow-clear': true}, class: 'rf-select'
+
+        .rf-input-group
+          - prompt = t('job_offers.filter.select_contract_type')
+          = select_tag "contract_type_id", options_from_collection_for_select(@contract_types, "id", "name", params[:contract_type_id]), include_blank: false, prompt: prompt, data: {placeholder: prompt, 'allow-clear': true}, class: 'rf-select'
+
+        .rf-input-group
+          - options = options_for_select(@counties, @county)
+          - prompt = t("job_offers.filter.select_county")
+          - data = {placeholder: prompt, 'allow-clear': true}
+          = select_tag :county, options, include_blank: false, prompt: prompt, data: data, class: 'rf-select'
+
+        %button.rf-btn{:title => "Rechercher", style: 'height: 40px;'}
           Rechercher
-    .rf-col-12.text-center
-      = link_to "Recherche avancée", job_offers_path, class: 'rf-link rf-fi-arrow-right-line rf-link--icon-right'
