@@ -358,7 +358,7 @@ fr:
       board:
         title: "Gestion des candidatures de l'offre %{job_offer_identifier}"
       index:
-        title: "Offres du Ministère des Armées"
+        title: ""
         new_job_offer: "Ajouter une offre"
         job_offers_count_index: "%{count} offres"
         job_offers_count_archived: "%{count} offres archivées"
