@@ -49,3 +49,4 @@ yarn-debug.log*
 .DS_Store
 
 *.diff
+.idea/

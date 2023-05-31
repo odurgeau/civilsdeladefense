@@ -33,14 +33,14 @@
                         - grouped_options = nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }
                         = f.association :category, collection: grouped_options, disabled: Category.all.select{|x| x.children.count != 0}.map(&:id), input_html: {class: 'custom-select'}
                       .col-12.col-md-3
+                        = f.association :bop
+                      .col-12.col-md-6
                         - if current_administrator.bant?
                           - grouped_options = Employer.roots.map{|x| [x.name, x.children.unscoped.order(:name)]}
-                          = f.association :employer, collection: grouped_options, as: :grouped_select, group_method: :last, input_html: {class: 'custom-select'}
+                          = f.association :employer, collection: grouped_options, as: :grouped_select, group_method: :last, input_html: {data: { controller: "autocomplete"}}
                         - else
                           - employers = [current_administrator.employer]
-                          = f.association :employer, collection: employers.map{|x| [x.code, x.id]}, disabled: true, include_blank: false
-                      .col-12.col-md-3
-                        = f.association :bop
+                          = f.association :employer, collection: employers.map{|x| [x.code, x.id]}, disabled: true, include_blank: false, input_html: {data: { controller: "autocomplete"}}
                     .row{data: { controller: 'autocomplete-city' }}
                       .col-12.col-md-6
                         = f.input :location, input_html: { 'data-autocomplete-city-target' => :location, 'data-action' => "click->autocomplete-city#search" }

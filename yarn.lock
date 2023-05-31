@@ -6296,6 +6296,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+slim-select@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/slim-select/-/slim-select-2.5.0.tgz#002d21886e59be5cb4bb0feb3ba6268001d54ed4"
+  integrity sha512-mGYtf57SMCG+9fhlqDYWXF0+K6EYHnYMplBFv1ku67MXFvM19PKeCSmLQoVAfAzQ3rgpql26iSl5XOI49zc0rQ==
+
 smoothscroll-polyfill@^0.4.3:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"

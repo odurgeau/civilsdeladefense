@@ -4,3 +4,4 @@ import 'trix/dist/trix.css'
 import 'node-snackbar/dist/snackbar.css'
 require('css/admin.scss')
 require('css/autocomplete.scss')
+import "slim-select/dist/slimselect.css"
