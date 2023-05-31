@@ -34,7 +34,7 @@
                         = f.association :category, collection: grouped_options, disabled: Category.all.select{|x| x.children.count != 0}.map(&:id), input_html: {class: 'custom-select'}
                       .col-12.col-md-3
                         = f.association :bop
-                      .col-12.col-md-6
+                      .col-12.col-md-9
                         - if current_administrator.bant?
                           - grouped_options = Employer.roots.map{|x| [x.name, x.children.pluck(:name, :id).sort_by { |item| item[0] }]}
                           = f.association :employer, collection: grouped_options, as: :grouped_select, group_method: :last, input_html: {data: { controller: "autocomplete"}}
