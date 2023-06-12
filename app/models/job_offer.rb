@@ -72,15 +72,15 @@ class JobOffer < ApplicationRecord
 
   with_options if: -> { published? } do
     validates :title, length: {maximum: 70}
-    validates :description, html_length: {maximum: 2000}
-    validates :organization_description, html_length: {maximum: 1000}, presence: true
-    validates :required_profile, html_length: {maximum: 1000}
-    validates :recruitment_process, html_length: {maximum: 700}
+    validates :description, html_length: {maximum: 5000}
+    validates :organization_description, html_length: {maximum: 2000}, presence: true
+    validates :required_profile, html_length: {maximum: 2000}
+    validates :recruitment_process, html_length: {maximum: 1400}
   end
 
-  validate :pep_or_bne
-  validates :pep_date, presence: true, if: -> { pep_value.present? }
-  validates :bne_date, presence: true, if: -> { bne_value.present? }
+  # validate :pep_or_bne
+  # validates :pep_date, presence: true, if: -> { pep_value.present? }
+  # validates :bne_date, presence: true, if: -> { bne_value.present? }
 
   def pep_or_bne
     return if pep_value.present? || bne_value.present?
