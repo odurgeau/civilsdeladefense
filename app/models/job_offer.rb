@@ -15,6 +15,7 @@ class JobOffer < ApplicationRecord
 
   ## Callbacks
   before_save :unset_sequential_id, if: -> { employer_id_changed? }
+  before_save :default_values_vta
   after_save :set_identifier, if: -> { saved_change_to_employer_id? }
   after_save :update_category_counter
   acts_as_sequenced scope: :employer_id
@@ -122,9 +123,9 @@ class JobOffer < ApplicationRecord
   ## States and events
   aasm column: :state, enum: true do
     state :draft, initial: true, before_enter: [:set_timestamp, :clean_archiving_reason]
-    state :published, before_enter: :set_timestamp
-    state :suspended, before_enter: :set_timestamp
-    state :archived, before_enter: :set_timestamp
+    state :published, before_enter: [:set_timestamp, :default_values_vta]
+    state :suspended, before_enter: [:set_timestamp, :default_values_vta]
+    state :archived, before_enter: [:set_timestamp, :default_values_vta]
 
     event :publish do
       transitions from: [:draft], to: :published, guard: :delay_before_publishing_over?
@@ -226,6 +227,12 @@ class JobOffer < ApplicationRecord
 
   def unset_sequential_id
     self.sequential_id = nil
+  end
+
+  def default_values_vta
+    self.bne_value = "-----" if bne_value.blank?
+    self.bne_date = Date.today if bne_value.present?
+    self.organization_description = "-----" if organization_description.blank?
   end
 
   def set_identifier

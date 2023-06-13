@@ -109,10 +109,6 @@ class Admin::JobOffersController < Admin::BaseController
     @job_offer.organization = current_organization
     @job_offer.employer = current_administrator.employer unless current_administrator.bant?
     @job_offer.cleanup_actor_administrator_dep(current_administrator, current_organization)
-    # Default value for VTA
-    @job_offer.bne_value = "-----"
-    @job_offer.bne_date = Date.today
-    @job_offer.organization_description = "-----"
 
     respond_to do |format|
       if @job_offer.save
@@ -132,10 +128,6 @@ class Admin::JobOffersController < Admin::BaseController
   def update
     @job_offer.assign_attributes(job_offer_params)
     @job_offer.cleanup_actor_administrator_dep(current_administrator, current_organization)
-    # Default value for VTA
-    @job_offer.bne_value = "-----"
-    @job_offer.bne_date = Date.today
-    @job_offer.organization_description = "-----"
 
     respond_to do |format|
       if @job_offer.save
